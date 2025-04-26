@@ -4,11 +4,12 @@ FROM node:20
 # Create and set working directory inside the container
 WORKDIR /app
 
+# Install dependencies
+RUN npm install
+
 # Copy package.json and package-lock.json first
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
 
 # Copy all source code into the container
 COPY appointment-service.js/ /healthcare_hcl/appointment-service.js
