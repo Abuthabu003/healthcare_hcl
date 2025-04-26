@@ -2,18 +2,18 @@
 FROM node:20
 
 # Create and set working directory inside the container
-WORKDIR /app
+WORKDIR /healthcare_hcl
 
 # Install dependencies
 RUN npm install
 
 # Copy package.json and package-lock.json first
-COPY package.json/ /app/package.json
+COPY package.json/ /healthcare_hcl/package.json
 
 
 # Copy all source code into the container
 COPY appointment-service.js/ /app/appointment-service.js
-COPY patient-service.js/ /app/patient-service.js
+COPY patient-service.js/ /healthcare_hcl/patient-service.js
 
 # Expose the app port (optional, example: 3000)
 EXPOSE 8000
