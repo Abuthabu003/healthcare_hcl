@@ -8,8 +8,7 @@ WORKDIR /healthcare_hcl
 RUN npm install
 
 # Copy package.json and package-lock.json first
-COPY package.json/ /healthcare_hcl/package.json
-
+COPY package*.json ./
 
 # Copy all source code into the container
 COPY appointment-service.js/ /app/appointment-service.js
