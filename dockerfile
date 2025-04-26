@@ -11,7 +11,8 @@ COPY package*.json ./
 RUN npm install
 
 # Copy all source code into the container
-COPY . .
+COPY appointment-service.js/ /healthcare_hcl/appointment-service.js
+COPY patient-service.js/ /healthcare_hcl/patient-service.js
 
 # Expose the app port (optional, example: 3000)
 EXPOSE 8000
