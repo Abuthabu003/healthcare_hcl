@@ -8,12 +8,12 @@ WORKDIR /app
 RUN npm install
 
 # Copy package.json and package-lock.json first
-COPY package.json ./
+COPY package.json/ /app
 
 
 # Copy all source code into the container
-COPY appointment-service.js/ /healthcare_hcl/appointment-service.js
-COPY patient-service.js/ /healthcare_hcl/patient-service.js
+COPY appointment-service.js/ /app/appointment-service.js
+COPY patient-service.js/ /app/patient-service.js
 
 # Expose the app port (optional, example: 3000)
 EXPOSE 8000
