@@ -1,16 +1,20 @@
-FROM ubuntu:latest
+# Use the official Node.js image
+FROM node:20
 
-# Set the working directory in the image
+# Create and set working directory inside the container
 WORKDIR /app
 
-# Copy the files from the host file system to the image file system
-COPY . /app
+# Copy package.json and package-lock.json first
+COPY package*.json ./
 
-# Install the necessary packages
-RUN apt-get update && apt-get install -y python3 python3-pip
+# Install dependencies
+RUN npm install
 
-# Set environment variables
-ENV NAME hcl_healthcare
+# Copy all source code into the container
+COPY . .
 
-# Run a command to start the application
+# Expose the app port (optional, example: 3000)
+EXPOSE 8000
+
+# Run the app
 CMD ["npm", "patient-service.js", "appointment-service.js"]
