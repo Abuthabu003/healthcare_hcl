@@ -8,7 +8,7 @@ WORKDIR /app
 RUN npm install
 
 # Copy package.json and package-lock.json first
-COPY package.json/ /app
+COPY package.json/ /app/package.json
 
 
 # Copy all source code into the container
