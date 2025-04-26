@@ -1,21 +1,21 @@
-# Use the official Node.js image
+# Use an official Node.js base image
 FROM node:20
 
-# Create and set working directory inside the container
+# Create app directory
 WORKDIR /healthcare_hcl
 
-# Install dependencies
+# Copy package.json and package-lock.json into the container
+COPY package*.json ./
+
+# Install app dependencies
 RUN npm install
 
-# Copy package.json and package-lock.json first
-COPY package*.json /healthcare_hcl
-
-# Copy all source code into the container
+# Bundle app source code inside Docker image
 COPY appointment-service.js/ /healthcare_hcl/appointment-service.js
 COPY patient-service.js/ /healthcare_hcl/patient-service.js
 
-# Expose the app port (optional, example: 3000)
-EXPOSE 8000
+# Expose your app port (optional, depends on app)
+EXPOSE 3000
 
 # Run the app
-CMD ["npm", "patient-service.js", "appointment-service.js"]
+CMD ["npm", "start"]
